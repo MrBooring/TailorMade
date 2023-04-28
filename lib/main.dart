@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             useMaterial3: true,
             primarySwatch: CustomTheme.lightPrimarySwatch,
-            scaffoldBackgroundColor: Color(0xFFF5F5F5),
-            appBarTheme: ThemeData.light().appBarTheme.copyWith(backgroundColor: Color(0xFFF5F5F5))),
+            scaffoldBackgroundColor: Color(0xFFF0F0F0),
+            appBarTheme: ThemeData.light().appBarTheme.copyWith(backgroundColor: Color(0xFFF0F0F0))),
         home: const Dashboard());
   }
 }
