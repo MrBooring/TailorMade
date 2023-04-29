@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'routes/routes.dart';
 import 'theme/themedata.dart';
 import 'view/pages/dashboard.dart';
 
@@ -17,10 +18,15 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            useMaterial3: true,
-            primarySwatch: CustomTheme.lightPrimarySwatch,
-            scaffoldBackgroundColor: Color(0xFFF0F0F0),
-            appBarTheme: ThemeData.light().appBarTheme.copyWith(backgroundColor: Color(0xFFF0F0F0))),
+          useMaterial3: true,
+          primarySwatch: CustomTheme.lightPrimarySwatch,
+          scaffoldBackgroundColor: Color(0xFFF0F0F0),
+          appBarTheme: ThemeData.light().appBarTheme.copyWith(
+                backgroundColor: Color(0xFFF0F0F0),
+              ),
+        ),
+        initialRoute: "/dashboard",
+        getPages: routes,
         home: const Dashboard());
   }
 }
