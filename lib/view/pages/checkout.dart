@@ -32,7 +32,7 @@ class _CheckoutState extends State<Checkout> {
           padding: EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: SizedBox(
-              height: size.height * .9,
+              height: size.height * .85,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
