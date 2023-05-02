@@ -144,59 +144,62 @@ class _DashboardState extends State<Dashboard> {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                         itemCount: dashitems.length,
                         itemBuilder: (context, index) {
-                          return Center(
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: size.height * .012,
-                                    ),
-                                    SizedBox(
-                                      height: size.height * .13,
-                                      width: size.width * .25,
-                                      child: Container(
-                                        padding: EdgeInsets.all(3),
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
-                                        child: Column(
-                                          children: [
-                                            SizedBox(
-                                              height: size.height * .05,
-                                            ),
-                                            Text(
-                                              dashitems[index],
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: size.height * .02,
-                                                fontWeight: FontWeight.w500,
+                          return GestureDetector(
+                            onTap: dashlogo[index]['call'],
+                            child: Center(
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                      child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: size.height * .012,
+                                      ),
+                                      SizedBox(
+                                        height: size.height * .13,
+                                        width: size.width * .25,
+                                        child: Container(
+                                          padding: EdgeInsets.all(3),
+                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
+                                          child: Column(
+                                            children: [
+                                              SizedBox(
+                                                height: size.height * .05,
                                               ),
-                                            )
-                                          ],
+                                              Text(
+                                                dashitems[index],
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: size.height * .02,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                )),
-                                Positioned(
-                                  left: size.width * .065,
-                                  child: Container(
-                                    height: size.height * .06,
-                                    width: size.width * .12,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(9),
-                                      child: Image.asset(
-                                        dashlogo[index]['png'].toString(),
-                                        fit: BoxFit.contain,
+                                    ],
+                                  )),
+                                  Positioned(
+                                    left: size.width * .065,
+                                    child: Container(
+                                      height: size.height * .06,
+                                      width: size.width * .12,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(9),
+                                        child: Image.asset(
+                                          dashlogo[index]['png'].toString(),
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: dashlogo[index]['color'] as Color,
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      color: dashlogo[index]['color'] as Color,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         },

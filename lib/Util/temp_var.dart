@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 var dashitems = [
   "Give Measurement",
@@ -8,27 +9,18 @@ var dashitems = [
   "More",
 ];
 
-var dashlogo = [
+List<Map<String, dynamic>> dashlogo = [
   {
     'png': 'lib/assets/iconpng/measure.png',
     'color': Colors.pink.shade200,
+    'call': () {
+      Get.toNamed("/Measurements");
+    }
   },
-  {
-    'png': 'lib/assets/iconpng/fabric.png',
-    'color': Colors.yellow.shade200,
-  },
-  {
-    'png': 'lib/assets/iconpng/suit.png',
-    'color': Colors.blue.shade200,
-  },
-  {
-    'png': 'lib/assets/iconpng/sewing.png',
-    'color': Colors.teal.shade200,
-  },
-  {
-    'png': 'lib/assets/iconpng/plus.png',
-    'color': Colors.purple.shade200,
-  },
+  {'png': 'lib/assets/iconpng/fabric.png', 'color': Colors.yellow.shade200, 'call': () {}},
+  {'png': 'lib/assets/iconpng/suit.png', 'color': Colors.blue.shade200, 'call': () {}},
+  {'png': 'lib/assets/iconpng/sewing.png', 'color': Colors.teal.shade200, 'call': () {}},
+  {'png': 'lib/assets/iconpng/plus.png', 'color': Colors.purple.shade200, 'call': () {}},
 ];
 
 var fabric = [
