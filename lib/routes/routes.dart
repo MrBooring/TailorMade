@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:tailormade/view/pages/cart.dart';
 import 'package:tailormade/view/pages/checkout.dart';
 import 'package:tailormade/view/pages/dashboard.dart';
+import 'package:tailormade/view/pages/fabric_collection.dart';
 import 'package:tailormade/view/pages/measurement_inputs.dart';
 import 'package:tailormade/view/pages/measurements.dart';
 
@@ -25,5 +26,9 @@ var routes = [
   GetPage(
     name: "/MeasurementInput",
     page: () => MeasurementInput(),
+  ),
+  GetPage(
+    name: "/FabricCollection",
+    page: () => FabricCollection(),
   ),
 ];
