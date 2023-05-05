@@ -27,7 +27,9 @@ List<Map<String, dynamic>> dashlogo = [
   {
     'png': 'lib/assets/iconpng/suit.png',
     'color': Colors.blue.shade200,
-    'call': () {},
+    'call': () {
+      Get.toNamed("/Customizesuit");
+    },
   },
   {
     'png': 'lib/assets/iconpng/sewing.png',
@@ -112,4 +114,10 @@ List<Map<String, dynamic>> collfabrics = [
     'text': "Velvet",
     'call': () {},
   },
+];
+
+List<Map<String, dynamic>> suittypes = [
+  {'txt': "2 peice", 'img': 'lib/assets/banners/2peice.jpg'},
+  {'txt': "3 peice", 'img': 'lib/assets/banners/3peice.jpg'},
+  {'txt': "Tuxedo", 'img': 'lib/assets/banners/tuxedo.jpeg'}
 ];

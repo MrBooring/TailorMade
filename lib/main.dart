@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           primarySwatch: CustomTheme.lightPrimarySwatch,
-          scaffoldBackgroundColor: Color(0xFFF0F0F0),
+          scaffoldBackgroundColor: Color.fromARGB(255, 248, 247, 247),
           appBarTheme: ThemeData.light().appBarTheme.copyWith(
                 backgroundColor: Color(0xFFF0F0F0),
               ),
