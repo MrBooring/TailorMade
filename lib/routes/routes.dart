@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tailormade/view/comman_pages/product_details.dart';
 import 'package:tailormade/view/pages/cart.dart';
 import 'package:tailormade/view/pages/checkout.dart';
 import 'package:tailormade/view/pages/customize_suit.dart';
@@ -35,5 +36,9 @@ var routes = [
   GetPage(
     name: "/Customizesuit",
     page: () => CustomizeSuit(),
+  ),
+  GetPage(
+    name: "/ProductDetails",
+    page: () => ProductDetails(),
   ),
 ];

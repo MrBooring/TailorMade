@@ -117,7 +117,7 @@ List<Map<String, dynamic>> collfabrics = [
 ];
 
 List<Map<String, dynamic>> suittypes = [
-  {'txt': "2 peice", 'img': 'lib/assets/banners/2peice.jpg'},
+  {'txt': "2 peice", 'img': 'lib/assets/banners/2peice.jpeg'},
   {'txt': "3 peice", 'img': 'lib/assets/banners/3peice.jpg'},
   {'txt': "Tuxedo", 'img': 'lib/assets/banners/tuxedo.jpeg'}
 ];

@@ -232,37 +232,42 @@ class _DashboardState extends State<Dashboard> {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(10),
-                            child: Container(
-                                padding: EdgeInsets.all(10),
-                                width: size.width * .4,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    SizedBox(
-                                      height: size.height * .1,
-                                      width: size.width * .35,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: Image.asset(
-                                          fabric[index],
-                                          fit: BoxFit.fill,
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.toNamed("/ProductDetails");
+                              },
+                              child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  width: size.width * .4,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SizedBox(
+                                        height: size.height * .1,
+                                        width: size.width * .35,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Image.asset(
+                                            fabric[index],
+                                            fit: BoxFit.fill,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Text(
-                                      "Fabric 78$index",
-                                      style: TextStyle(
-                                        fontSize: size.height * .02,
-                                        fontWeight: FontWeight.w500,
+                                      Text(
+                                        "Fabric 78$index",
+                                        style: TextStyle(
+                                          fontSize: size.height * .02,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )),
+                                    ],
+                                  )),
+                            ),
                           );
                         },
                       ),

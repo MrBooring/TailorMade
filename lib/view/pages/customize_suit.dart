@@ -38,7 +38,7 @@ class _CustomizeSuitState extends State<CustomizeSuit> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.symmetric(vertical: 0),
                     child: SizedBox(
                       width: size.width,
                       height: size.height * .35,
@@ -59,7 +59,10 @@ class _CustomizeSuitState extends State<CustomizeSuit> {
                               children: [
                                 Expanded(
                                   flex: 9,
-                                  child: Placeholder(),
+                                  child: Image.asset(
+                                    suittypes[index]['img'],
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                                 Expanded(
                                   child: Container(
@@ -87,9 +90,12 @@ class _CustomizeSuitState extends State<CustomizeSuit> {
                 Expanded(
                   child: Stack(
                     children: [
-                      Image.asset(
-                        'lib/assets/banners/customsuitbanner.jpg',
-                        fit: BoxFit.fill,
+                      SizedBox(
+                        width: size.width,
+                        child: Image.asset(
+                          'lib/assets/banners/customsuitbanner.jpg',
+                          fit: BoxFit.fill,
+                        ),
                       ),
                       Center(
                         child: Container(
