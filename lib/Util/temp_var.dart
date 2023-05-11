@@ -121,3 +121,9 @@ List<Map<String, dynamic>> suittypes = [
   {'txt': "3 peice", 'img': 'lib/assets/banners/3peice.jpg'},
   {'txt': "Tuxedo", 'img': 'lib/assets/banners/tuxedo.jpeg'}
 ];
+
+List banner = [
+  'lib/assets/banners/sewingbanner1.jpg',
+  'lib/assets/banners/banner1.png',
+  'lib/assets/banners/sewingbanner2.jpg',
+];

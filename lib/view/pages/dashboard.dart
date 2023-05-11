@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tailormade/Util/globalsize.dart';
@@ -26,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFF304F8C),
+                color: Theme.of(context).colorScheme.secondary,
               ),
               child: Text(
                 'Talor Made',
@@ -119,272 +120,304 @@ class _DashboardState extends State<Dashboard> {
       body: SafeArea(
         child: MediaQuery(
           data: MediaQuery.of(context),
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: SingleChildScrollView(
-              child: SizedBox(
-                child: Column(
-                  children: [
-                    Container(
-                      height: size.height * .2,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "lib/assets/banners/banner1.png",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: size.height * .4,
-                      child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-                        itemCount: dashitems.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: dashlogo[index]['call'],
-                            child: Center(
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                      child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: size.height * .012,
-                                      ),
-                                      SizedBox(
-                                        height: size.height * .13,
-                                        width: size.width * .25,
-                                        child: Container(
-                                          padding: EdgeInsets.all(3),
-                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: size.height * .05,
-                                              ),
-                                              Text(
-                                                dashitems[index],
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize: size.height * .02,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )),
-                                  Positioned(
-                                    left: size.width * .065,
-                                    child: Container(
-                                      height: size.height * .06,
-                                      width: size.width * .12,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(9),
-                                        child: Image.asset(
-                                          dashlogo[index]['png'].toString(),
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: dashlogo[index]['color'] as Color,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    height: size.height * .2,
+                    width: size.width,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CarouselSlider(
+                        items: banner
+                            .map((e) => Container(
+                                  child: Center(
+                                    child: Image.asset(
+                                      e,
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
+                                ))
+                            .toList(),
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          enlargeCenterPage: true,
+                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                          enlargeFactor: 2,
+                          viewportFraction: .9,
+                        ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Our Fabric Collection",
-                          style: TextStyle(
-                            fontSize: size.height * .025,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "view all",
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: size.height * .2,
-                      child: ListView.builder(
-                        itemCount: fabric.length,
-                        // shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.toNamed("/ProductDetails");
-                              },
-                              child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  width: size.width * .4,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      SizedBox(
-                                        height: size.height * .1,
-                                        width: size.width * .35,
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
-                                          child: Image.asset(
-                                            fabric[index],
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        "Fabric 78$index",
-                                        style: TextStyle(
-                                          fontSize: size.height * .02,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                          );
-                        },
+                  ),
+                  Container(
+                    child: GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 1.1,
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Our Tailor's Choice",
-                          style: TextStyle(
-                            fontSize: size.height * .025,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "view all",
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: size.height * .16,
-                      child: ListView.builder(
-                        itemCount: suits.length,
-                        // shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              width: size.width * .6,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  SizedBox(
-                                    height: size.height * .1,
-                                    width: size.width * .2,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.asset(
-                                        suits[index]['img'].toString(),
-                                        fit: BoxFit.cover,
-                                      ),
+                      itemCount: dashitems.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: dashlogo[index]['call'],
+                          child: Center(
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                    child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: size.height * .012,
                                     ),
-                                  ),
-                                  Column(
-                                    // mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: size.width * .34,
-                                        child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                    SizedBox(
+                                      height: size.height * .13,
+                                      width: size.width * .25,
+                                      child: Container(
+                                        padding: EdgeInsets.all(3),
+                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
+                                        child: Column(
                                           children: [
-                                            Spacer(),
                                             SizedBox(
-                                              height: size.height * .035,
-                                              width: size.width * .09,
-                                              child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.favorite,
-                                                    size: size.height * .02,
-                                                  )),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 2),
-                                        child: Row(
-                                          children: [
+                                              height: size.height * .05,
+                                            ),
                                             Text(
-                                              suits[index]['text'].toString(),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
+                                              dashitems[index],
+                                              textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: size.height * .02,
                                                 fontWeight: FontWeight.w500,
                                               ),
-                                            ),
+                                            )
                                           ],
                                         ),
                                       ),
-                                      Row(
+                                    ),
+                                  ],
+                                )),
+                                Positioned(
+                                  left: size.width * .065,
+                                  child: Container(
+                                    height: size.height * .06,
+                                    width: size.width * .12,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(9),
+                                      child: Image.asset(
+                                        dashlogo[index]['png'].toString(),
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: dashlogo[index]['color'] as Color,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  Container(
+                    color: Colors.amber.shade200,
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Our Fabric Collection",
+                              style: TextStyle(
+                                fontSize: size.height * .025,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "view all",
+                              style: TextStyle(
+                                fontSize: size.height * .02,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: size.height * .2,
+                          child: ListView.builder(
+                            itemCount: fabric.length,
+                            // shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.toNamed("/ProductDetails");
+                                  },
+                                  child: Container(
+                                      padding: EdgeInsets.all(10),
+                                      width: size.width * .4,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Icon(
-                                            Icons.star,
-                                            size: size.height * .015,
+                                          SizedBox(
+                                            height: size.height * .1,
+                                            width: size.width * .35,
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(10),
+                                              child: Image.asset(
+                                                fabric[index],
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
                                           ),
                                           Text(
-                                            "4.7",
+                                            "Fabric 78$index",
                                             style: TextStyle(
-                                              fontSize: size.height * .015,
+                                              fontSize: size.height * .02,
                                               fontWeight: FontWeight.w500,
                                             ),
                                           ),
                                         ],
-                                      )
-                                    ],
-                                  )
-                                ],
+                                      )),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    color: Colors.teal.shade200,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Our Tailor's Choice",
+                              style: TextStyle(
+                                fontSize: size.height * .025,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ),
+                            Text(
+                              "view all",
+                              style: TextStyle(
+                                fontSize: size.height * .02,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: size.height * .16,
+                          child: ListView.builder(
+                            itemCount: suits.length,
+                            // shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  width: size.width * .6,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SizedBox(
+                                        height: size.height * .1,
+                                        width: size.width * .2,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Image.asset(
+                                            suits[index]['img'].toString(),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        // mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            width: size.width * .34,
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              children: [
+                                                Spacer(),
+                                                SizedBox(
+                                                  height: size.height * .035,
+                                                  width: size.width * .09,
+                                                  child: IconButton(
+                                                      onPressed: () {},
+                                                      icon: Icon(
+                                                        Icons.favorite,
+                                                        size: size.height * .02,
+                                                      )),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 2),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  suits[index]['text'].toString(),
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    fontSize: size.height * .02,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                size: size.height * .015,
+                                              ),
+                                              Text(
+                                                "4.7",
+                                                style: TextStyle(
+                                                  fontSize: size.height * .015,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           ),
