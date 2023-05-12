@@ -51,6 +51,10 @@ class _DashboardState extends State<Dashboard> {
                 // TODO: Add onTap functionality
               },
             ),
+            Divider(
+              thickness: 1,
+              color: Colors.grey.shade400,
+            ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
@@ -124,8 +128,32 @@ class _DashboardState extends State<Dashboard> {
             child: SizedBox(
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: size.width * .9,
+                      height: size.height * .06,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.search,
+                          ),
+                          suffixIcon: Icon(
+                            Icons.close,
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 2,
+                            horizontal: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     height: size.height * .2,
                     width: size.width,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
@@ -134,11 +162,11 @@ class _DashboardState extends State<Dashboard> {
                       child: CarouselSlider(
                         items: banner
                             .map((e) => Container(
-                                  child: Center(
-                                    child: Image.asset(
-                                      e,
-                                      fit: BoxFit.fill,
-                                    ),
+                                  height: size.height * .2,
+                                  width: size.width,
+                                  child: Image.asset(
+                                    e,
+                                    fit: BoxFit.fill,
                                   ),
                                 ))
                             .toList(),
@@ -158,7 +186,7 @@ class _DashboardState extends State<Dashboard> {
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
-                        childAspectRatio: 1.1,
+                        childAspectRatio: 1.2,
                       ),
                       itemCount: dashitems.length,
                       itemBuilder: (context, index) {
@@ -174,8 +202,8 @@ class _DashboardState extends State<Dashboard> {
                                       height: size.height * .012,
                                     ),
                                     SizedBox(
-                                      height: size.height * .13,
-                                      width: size.width * .25,
+                                      height: size.height * .11,
+                                      width: size.width * .23,
                                       child: Container(
                                         padding: EdgeInsets.all(3),
                                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
@@ -199,7 +227,7 @@ class _DashboardState extends State<Dashboard> {
                                   ],
                                 )),
                                 Positioned(
-                                  left: size.width * .065,
+                                  left: size.width * .057,
                                   child: Container(
                                     height: size.height * .06,
                                     width: size.width * .12,

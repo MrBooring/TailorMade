@@ -7,8 +7,13 @@ import 'package:tailormade/view/pages/dashboard.dart';
 import 'package:tailormade/view/pages/fabric_collection.dart';
 import 'package:tailormade/view/pages/measurement_inputs.dart';
 import 'package:tailormade/view/pages/measurements.dart';
+import 'package:tailormade/view/pages/splash/splashmain.dart';
 
 var routes = [
+  GetPage(
+    name: "/",
+    page: () => SplashMain(),
+  ),
   GetPage(
     name: "/dashboard",
     page: () => Dashboard(),
