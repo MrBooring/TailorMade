@@ -16,6 +16,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.small(
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         onPressed: () {
           Get.toNamed("/cart");
         },
@@ -132,7 +133,7 @@ class _DashboardState extends State<Dashboard> {
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
                       width: size.width * .9,
-                      height: size.height * .06,
+                      height: size.height * .05,
                       child: TextFormField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:tailormade/Util/globalsize.dart';
 
 class SplashMain extends StatefulWidget {
@@ -28,6 +29,22 @@ class _SplashMainState extends State<SplashMain> {
   var t1 = 0.0;
   var t2 = 0.0;
   var imgscale = 1.0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(milliseconds: 1000), () {
+      drop();
+    });
+    Timer(Duration(milliseconds: 1400), () {
+      expand();
+    });
+    Timer(Duration(seconds: 3), () {
+      Get.toNamed("/dashboard");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Color clr = Theme.of(context).colorScheme.secondary;
@@ -37,7 +54,7 @@ class _SplashMainState extends State<SplashMain> {
           child: Stack(
             children: [
               AnimatedPositioned(
-                duration: Duration(milliseconds: 500),
+                duration: Duration(milliseconds: 700),
                 top: yy,
                 left: xx,
                 child: Container(
@@ -45,7 +62,7 @@ class _SplashMainState extends State<SplashMain> {
                   child: AnimatedContainer(
                     width: wid,
                     height: hid,
-                    duration: Duration(milliseconds: 420),
+                    duration: Duration(milliseconds: 640),
                     decoration: BoxDecoration(
                       color: clr,
                       shape: BoxShape.circle,
@@ -83,46 +100,25 @@ class _SplashMainState extends State<SplashMain> {
                   ],
                 ),
               ),
-              Positioned(
-                bottom: 10,
-                right: 170,
-                child: Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        drop();
-                        Timer(Duration(milliseconds: 400), () {
-                          expand();
-                        });
-                      },
-                      child: Text("init"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          wid = size.width * .09;
-                          hid = size.height * .05;
-                          xx = size.width * .45;
-                          yy = size.height * .0;
-
-                          x = size.width * .3;
-                          y = size.height * .4;
-
-                          t1 = .0;
-                          t2 = .0;
-                          imgscale = 1.0;
-                        });
-                      },
-                      child: Text("undo"),
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void undo() {
+    wid = size.width * .09;
+    hid = size.height * .05;
+    xx = size.width * .45;
+    yy = size.height * .0;
+
+    x = size.width * .3;
+    y = size.height * .4;
+
+    t1 = .0;
+    t2 = .0;
+    imgscale = 1.0;
   }
 
   void drop() {
